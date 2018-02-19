@@ -22,6 +22,8 @@ public final class BinarySearchTree {
         if (tree == null) {
             tree = new Node(key);
             tree.parents = parents;
+        } else if (tree.key == key){
+            return tree;
         } else if (key > tree.key) {
             parents = tree;
             tree.right = insert(tree.right, key, parents);
