@@ -10,7 +10,7 @@ public final class BinarySearchTree {
 
         Node left;
         Node right;
-        Node parents;
+        Node parent;
 
         public Node (int key){
             this.key = key;
@@ -21,7 +21,7 @@ public final class BinarySearchTree {
     private Node insert(Node tree, int key, Node parents) {
         if (tree == null) {
             tree = new Node(key);
-            tree.parents = parents;
+            tree.parent = parents;
         } else if (tree.key == key){
             return tree;
         } else if (key > tree.key) {
@@ -52,27 +52,27 @@ public final class BinarySearchTree {
             return remove(tree.right, key);
         } else {
             if (tree.left == null && tree.right == null) {
-                if (tree.parents.left == tree) {
-                    tree.parents.left = null;
+                if (tree.parent.left == tree) {
+                    tree.parent.left = null;
                 } else {
-                    tree.parents.right = null;
+                    tree.parent.right = null;
                 }
             } else if (tree.left != null && tree.right == null) {
-                if (tree.parents.left == tree) {
-                    tree.left.parents = tree.parents;
-                    tree.parents.left = tree.left;
+                if (tree.parent.left == tree) {
+                    tree.left.parent = tree.parent;
+                    tree.parent.left = tree.left;
                 }
                 else {
-                    tree.left.parents = tree.parents;
-                    tree.parents.right = tree.left;
+                    tree.left.parent = tree.parent;
+                    tree.parent.right = tree.left;
                 }
             } else if (tree.left == null) {
-                if (tree.parents.left == tree) {
-                    tree.right.parents = tree.parents;
-                    tree.parents.left = tree.right;
+                if (tree.parent.left == tree) {
+                    tree.right.parent = tree.parent;
+                    tree.parent.left = tree.right;
                 } else {
-                    tree.right.parents = tree.parents;
-                    tree.parents.right = tree.right;
+                    tree.right.parent = tree.parent;
+                    tree.parent.right = tree.right;
                 }
             } else {
                 Node k = tree.right;
@@ -81,7 +81,7 @@ public final class BinarySearchTree {
                 }
                 tree.key = k.key;
                 tree.right.left = k.right;
-                k.right.parents = tree.right;
+                tree.right.left.parent = tree.right;
             }
             return tree;
         }
@@ -119,12 +119,12 @@ public final class BinarySearchTree {
 
 
 
-    private Node searchParents(Node tree, int key) {
+    private int searchParents(Node tree, int key) {
         if (tree == null) {
-            return null;
+            return Integer.parseInt(null);
         }
         if (tree.key == key) {
-            return tree.parents;
+            return tree.parent.key;
         }
         if (tree.key < key) {
             return searchParents(tree.right, key);
@@ -135,7 +135,7 @@ public final class BinarySearchTree {
 
 
 
-    public Node searchParent(int key){
+    public int searchParent(int key){
         return searchParents(root , key);
     }
 
@@ -143,12 +143,12 @@ public final class BinarySearchTree {
 
 
 
-    private Node searchRightChildren(Node tree, int key) {
+    private int searchRightChildren(Node tree, int key) {
         if (tree == null) {
-            return null;
+            return Integer.parseInt(null);
         }
         if (tree.key == key) {
-            return tree.right;
+            return tree.right.key;
         }
         if (tree.key < key) {
             return searchRightChildren(tree.right, key);
@@ -158,18 +158,18 @@ public final class BinarySearchTree {
     }
 
 
-    public Node searchRightChildren(int key){
+    public int searchRightChildren(int key){
         return searchRightChildren(root , key);
     }
 
 
 
-    private Node searchLeftChildren(Node tree, int key) {
+    private int searchLeftChildren(Node tree, int key) {
         if (tree == null) {
-            return null;
+            return Integer.parseInt(null);
         }
         if (tree.key == key) {
-            return tree.left;
+            return tree.left.key;
         }
         if (tree.key < key) {
             return searchLeftChildren(tree.right, key);
@@ -178,7 +178,7 @@ public final class BinarySearchTree {
         }
     }
 
-    public Node searchLeftChilgren(int key){
+    public int searchLeftChildren(int key){
         return searchLeftChildren(root , key);
     }
 
