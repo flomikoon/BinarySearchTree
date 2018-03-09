@@ -18,7 +18,7 @@ public final class BinarySearchTree {
         Node right;
         Node parent;
 
-        public Node (int key){
+        Node(int key){
             this.key = key;
         }
 
@@ -106,7 +106,6 @@ public final class BinarySearchTree {
                     tree.left = k.right;
                     tree = tree.left;
                     tree.parent = k.parent;
-
                 }
             }
             return tree;
@@ -145,9 +144,9 @@ public final class BinarySearchTree {
 
 
 
-    private int searchParents(Node tree, int key) {
+    private int searchParents(Node tree, int key){
         if (tree == null) {
-            return Integer.parseInt(null);
+            throw new NullPointerException() ;
         }
         if (tree.key == key) {
             return tree.parent.key;
@@ -171,7 +170,7 @@ public final class BinarySearchTree {
 
     private int searchRightChildren(Node tree, int key) {
         if (tree == null) {
-            return Integer.parseInt(null);
+            throw new NullPointerException();
         }
         if (tree.key == key) {
             return tree.right.key;
@@ -192,7 +191,7 @@ public final class BinarySearchTree {
 
     private int searchLeftChildren(Node tree, int key) {
         if (tree == null) {
-            return Integer.parseInt(null);
+            throw new NullPointerException();
         }
         if (tree.key == key) {
             return tree.left.key;
