@@ -35,10 +35,11 @@ public class BinarySearchTreeTest {
         d.insert(3);
         d.insert(4);
         d.insert(7);
-        d.remove(3);
+        d.remove(5);
         d.remove(7);
 
-        assertFalse(d.search(3));
+        assertFalse(d.search(5));
+        assertTrue(d.search(6));
         assertTrue(d.search(4));
         assertFalse(d.search(7));
     }
