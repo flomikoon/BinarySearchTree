@@ -59,7 +59,7 @@ public final class BinarySearchTree {
         } else {
             if (tree.left == null && tree.right == null) {
                 if(tree.parent == null){
-                    return null;
+                    root = null;
                 } else if (tree.parent.left == tree) {
                     tree.parent.left = null;
                 } else {
