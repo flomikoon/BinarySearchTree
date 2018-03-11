@@ -4,7 +4,7 @@ public final class BinarySearchTree {
 
     private Node root;
 
-    public BinarySearchTree( ) {
+    public BinarySearchTree() {
 
         root = null;
 
@@ -18,7 +18,7 @@ public final class BinarySearchTree {
         Node right;
         Node parent;
 
-        Node(int key){
+        Node(int key) {
             this.key = key;
         }
 
@@ -28,7 +28,7 @@ public final class BinarySearchTree {
         if (tree == null) {
             tree = new Node(key);
             tree.parent = parent;
-        } else if (tree.key == key){
+        } else if (tree.key == key) {
             return tree;
         } else if (key > tree.key) {
             parent = tree;
@@ -41,11 +41,9 @@ public final class BinarySearchTree {
     }
 
 
-
-    public void insert(int key){
-        root = insert(root , key , null);
+    public void insert(int key) {
+        root = insert(root, key, null);
     }
-
 
 
     private Node remove(Node tree, int key) {
@@ -58,7 +56,7 @@ public final class BinarySearchTree {
             return remove(tree.right, key);
         } else {
             if (tree.left == null && tree.right == null) {
-                if(tree.parent == null){
+                if (tree.parent == null) {
                     root = null;
                 } else if (tree.parent.left == tree) {
                     tree.parent.left = null;
@@ -66,20 +64,19 @@ public final class BinarySearchTree {
                     tree.parent.right = null;
                 }
             } else if (tree.left != null && tree.right == null) {
-                if (tree.parent == null){
+                if (tree.parent == null) {
                     tree = tree.left;
-                }else if(tree.parent.left == tree) {
+                } else if (tree.parent.left == tree) {
                     tree.left.parent = tree.parent;
                     tree.parent.left = tree.left;
-                }
-                else {
+                } else {
                     tree.left.parent = tree.parent;
                     tree.parent.right = tree.left;
                 }
             } else if (tree.left == null) {
-                if (tree.parent == null){
+                if (tree.parent == null) {
                     tree = tree.right;
-                }else if (tree.parent.left == tree) {
+                } else if (tree.parent.left == tree) {
                     tree.right.parent = tree.parent;
                     tree.parent.left = tree.right;
                 } else {
@@ -92,14 +89,14 @@ public final class BinarySearchTree {
                     k = k.left;
                 }
                 tree.key = k.key;
-                if (tree.right.right == null && tree.right.left == null){
+                if (tree.right.right == null && tree.right.left == null) {
                     tree.right = null;
-                } else if (tree.right.right != null && tree.right.left == null){
+                } else if (tree.right.right != null && tree.right.left == null) {
                     tree.right = tree.right.right;
                     tree.right.parent = tree;
                 } else {
                     tree = tree.right;
-                    while (tree.parent != k.parent){
+                    while (tree.parent != k.parent) {
                         tree = tree.left;
                     }
                     tree = tree.parent;
@@ -113,12 +110,9 @@ public final class BinarySearchTree {
     }
 
 
-
-    public void remove(int key){
-        remove(root , key);
+    public void remove(int key) {
+        remove(root, key);
     }
-
-
 
 
     private boolean search(Node tree, int key) {
@@ -136,17 +130,14 @@ public final class BinarySearchTree {
     }
 
 
-
-    public boolean search(int key){
-        return search(root , key);
+    public boolean search(int key) {
+        return search(root, key);
     }
 
 
-
-
-    private int searchParents(Node tree, int key){
+    private int searchParents(Node tree, int key) {
         if (tree == null) {
-            throw new NullPointerException() ;
+            throw new NullPointerException();
         }
         if (tree.key == key) {
             return tree.parent.key;
@@ -159,13 +150,9 @@ public final class BinarySearchTree {
     }
 
 
-
-    public int searchParent(int key){
-        return searchParents(root , key);
+    public int searchParent(int key) {
+        return searchParents(root, key);
     }
-
-
-
 
 
     private int searchRightChildren(Node tree, int key) {
@@ -183,10 +170,9 @@ public final class BinarySearchTree {
     }
 
 
-    public int searchRightChildren(int key){
-        return searchRightChildren(root , key);
+    public int searchRightChildren(int key) {
+        return searchRightChildren(root, key);
     }
-
 
 
     private int searchLeftChildren(Node tree, int key) {
@@ -203,8 +189,8 @@ public final class BinarySearchTree {
         }
     }
 
-    public int searchLeftChildren(int key){
-        return searchLeftChildren(root , key);
+    public int searchLeftChildren(int key) {
+        return searchLeftChildren(root, key);
     }
 
 
