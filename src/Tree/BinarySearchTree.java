@@ -136,16 +136,17 @@ public final class BinarySearchTree {
 
 
     private int searchParents(Node tree, int key) {
-        if (tree == null) {
-            throw new NullPointerException();
-        }
-        if (tree.key == key) {
-            return tree.parent.key;
-        }
-        if (tree.key < key) {
-            return searchParents(tree.right, key);
-        } else {
-            return searchParents(tree.left, key);
+        try {
+            if (tree.key == key) {
+                return tree.parent.key;
+            }
+            if (tree.key < key) {
+                return searchParents(tree.right, key);
+            } else {
+                return searchParents(tree.left, key);
+            }
+        } catch (NullPointerException e) {
+            return 0;
         }
     }
 
@@ -156,16 +157,17 @@ public final class BinarySearchTree {
 
 
     private int searchRightChildren(Node tree, int key) {
-        if (tree == null) {
-            throw new NullPointerException();
-        }
-        if (tree.key == key) {
-            return tree.right.key;
-        }
-        if (tree.key < key) {
-            return searchRightChildren(tree.right, key);
-        } else {
-            return searchRightChildren(tree.left, key);
+        try {
+            if (tree.key == key) {
+                return tree.right.key;
+            }
+            if (key > tree.key) {
+                return searchRightChildren(tree.right, key);
+            } else {
+                return searchRightChildren(tree.left, key);
+            }
+        } catch (NullPointerException e){
+            return 0;
         }
     }
 
@@ -176,16 +178,17 @@ public final class BinarySearchTree {
 
 
     private int searchLeftChildren(Node tree, int key) {
-        if (tree == null) {
-            throw new NullPointerException();
-        }
-        if (tree.key == key) {
-            return tree.left.key;
-        }
-        if (tree.key < key) {
-            return searchLeftChildren(tree.right, key);
-        } else {
-            return searchLeftChildren(tree.left, key);
+        try {
+            if (tree.key == key) {
+                return tree.left.key;
+            }
+            if (key > tree.key) {
+                return searchLeftChildren(tree.right, key);
+            } else {
+                return searchLeftChildren(tree.left, key);
+            }
+        } catch (NullPointerException e) {
+            return 0;
         }
     }
 
