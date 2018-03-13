@@ -65,7 +65,8 @@ public final class BinarySearchTree {
                 }
             } else if (tree.left != null && tree.right == null) {
                 if (tree.parent == null) {
-                    tree = tree.left;
+                    root = tree.left;
+                    tree.left.parent = null;
                 } else if (tree.parent.left == tree) {
                     tree.left.parent = tree.parent;
                     tree.parent.left = tree.left;
@@ -75,7 +76,8 @@ public final class BinarySearchTree {
                 }
             } else if (tree.left == null) {
                 if (tree.parent == null) {
-                    tree = tree.right;
+                    root = tree.right;
+                    tree.right.parent = null;
                 } else if (tree.parent.left == tree) {
                     tree.right.parent = tree.parent;
                     tree.parent.left = tree.right;

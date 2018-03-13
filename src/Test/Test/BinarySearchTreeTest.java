@@ -48,6 +48,24 @@ public class BinarySearchTreeTest {
         assertTrue(v.search(6));
         assertTrue(v.search(4));
         assertFalse(v.search(7));
+
+        BinarySearchTree g = new BinarySearchTree();
+
+        g.insert(5);
+        g.insert(6);
+        g.remove(5);
+
+        assertTrue(g.search(6));
+        assertFalse(g.search(5));
+
+        g.remove(6);
+        assertFalse(g.search(6));
+
+        g.insert(5);
+        g.insert(6);
+        g.insert(4);
+        g.remove(5);
+        assertFalse(g.search(5));
     }
 
     @Test
