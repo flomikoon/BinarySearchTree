@@ -66,6 +66,40 @@ public class BinarySearchTreeTest {
         g.insert(4);
         g.remove(5);
         assertFalse(g.search(5));
+
+        BinarySearchTree p = new BinarySearchTree();
+
+        p.insert(5);
+        p.insert(6);
+        p.insert(7);
+        p.remove(5);
+        assertFalse(p.search(5));
+        assertTrue(p.search(6));
+        assertTrue(p.search(7));
+
+        BinarySearchTree l = new BinarySearchTree();
+
+        l.insert(5);
+        l.insert(4);
+        l.insert(9);
+        l.insert(7);
+        l.insert(8);
+        l.insert(6);
+        l.remove(5);
+
+        assertFalse(l.search(5));
+
+        BinarySearchTree t = new BinarySearchTree();
+
+        t.insert(10);
+        t.insert(5);
+        t.insert(9);
+        t.insert(7);
+        t.insert(3);
+        t.insert(4);
+        t.remove(10);
+
+        assertFalse(l.search(10));
     }
 
     @Test
@@ -77,8 +111,10 @@ public class BinarySearchTreeTest {
         d.insert(3);
         d.insert(4);
         d.insert(7);
+        d.remove(6);
 
         assertEquals(5 , d.searchParent(3));
+        assertEquals(5 , d.searchParent(7));
         assertEquals(0 , d.searchParent(5));
     }
 
