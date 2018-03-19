@@ -10,15 +10,15 @@ public final class BinarySearchTree {
 
     }
 
-    static class Node {
+    static public class Node {
 
-        int key;
+        public int key;
 
         Node left;
         Node right;
         Node parent;
 
-        Node(int key) {
+         Node(int key) {
             this.key = key;
         }
 
@@ -139,66 +139,60 @@ public final class BinarySearchTree {
     }
 
 
-    private int searchParents(Node tree, int key) {
-        try {
-            if (tree.key == key) {
-                return tree.parent.key;
-            }
-            if (tree.key < key) {
-                return searchParents(tree.right, key);
-            } else {
-                return searchParents(tree.left, key);
-            }
-        } catch (NullPointerException e) {
-            return 0;
+    private Node searchParents(Node tree, int key) {
+        if(tree == null) {
+            return null;
+        } else if (tree.key == key) {
+            return tree.parent;
+        } else if (tree.key < key) {
+            return searchParents(tree.right, key);
+        } else {
+            return searchParents(tree.left, key);
         }
+
     }
 
 
-    public int searchParent(int key) {
+    public Node searchParent(int key) {
         return searchParents(root, key);
     }
 
 
-    private int searchRightChildren(Node tree, int key) {
-        try {
-            if (tree.key == key) {
-                return tree.right.key;
-            }
-            if (key > tree.key) {
-                return searchRightChildren(tree.right, key);
-            } else {
-                return searchRightChildren(tree.left, key);
-            }
-        } catch (NullPointerException e){
-            return 0;
+    private Node searchRightChildren(Node tree, int key) {
+        if(tree == null) {
+            return null;
+        } else if (tree.key == key) {
+            return tree.right;
+        } else if (key > tree.key) {
+            return searchRightChildren(tree.right, key);
+        } else {
+            return searchRightChildren(tree.left, key);
         }
     }
 
 
-    public int searchRightChildren(int key) {
+    public Node searchRightChildren(int key) {
         return searchRightChildren(root, key);
     }
 
 
-    private int searchLeftChildren(Node tree, int key) {
-        try {
-            if (tree.key == key) {
-                return tree.left.key;
-            }
-            if (key > tree.key) {
-                return searchLeftChildren(tree.right, key);
-            } else {
-                return searchLeftChildren(tree.left, key);
-            }
-        } catch (NullPointerException e) {
-            return 0;
+    private Node searchLeftChildren(Node tree, int key) {
+        if(tree == null) {
+            return null;
+        } else if (tree.key == key) {
+            return tree.left;
+        } else if (key > tree.key) {
+            return searchLeftChildren(tree.right, key);
+        } else {
+            return searchLeftChildren(tree.left, key);
         }
     }
 
-    public int searchLeftChildren(int key) {
+
+    public Node searchLeftChildren(int key) {
         return searchLeftChildren(root, key);
     }
+
 
 
 }

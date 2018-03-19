@@ -113,9 +113,9 @@ public class BinarySearchTreeTest {
         d.insert(7);
         d.remove(6);
 
-        assertEquals(5 , d.searchParent(3));
-        assertEquals(5 , d.searchParent(7));
-        assertEquals(0 , d.searchParent(5));
+        assertEquals(5 , d.searchParent(3).key);
+        assertEquals(5 , d.searchParent(7).key);
+        assertEquals(null , d.searchParent(5));
     }
 
     @Test
@@ -129,15 +129,18 @@ public class BinarySearchTreeTest {
         d.insert(2);
         d.insert(7);
 
-        assertEquals( 2, d.searchLeftChildren(3));
-        assertEquals(0 , d.searchLeftChildren(7));
+        assertEquals( 2, d.searchLeftChildren(3).key);
+        assertEquals(null , d.searchLeftChildren(7));
     }
 
     @Test
     public void SearchRightChildrenTest() {
         BinarySearchTree d = new BinarySearchTree();
 
-        assertEquals(0 , d.searchRightChildren(5));
+
+
+
+        assertEquals(null , d.searchRightChildren(5));
 
         d.insert(5);
         d.insert(6);
@@ -146,8 +149,9 @@ public class BinarySearchTreeTest {
         d.insert(7);
         d.remove(6);
 
-        assertEquals( 4, d.searchRightChildren(3));
-        assertEquals(7 , d.searchRightChildren(5));
-        assertEquals(0 , d.searchRightChildren(7));
+
+        assertEquals(7 , d.searchRightChildren(5).key);
     }
+
+
 }
